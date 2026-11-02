@@ -9,7 +9,10 @@ def add_to_cart(cart: Cart, catalog: Catalog, sku: str, quantity: int = 1) -> Ca
     if quantity < 1:
         raise CartError("Quantity must be at least 1.")
 
-    catalog.get(sku)  # raises UnknownProductError for unknown SKUs
+    product = catalog.get(sku)  # raises UnknownProductError for unknown SKUs
+
+    if product.max_per_order is not None and quantity > product.max_per_order:
+        raise CartError(f"Sorry, you can only buy {product.max_per_order} of these.")
 
     line = cart.line_for(sku)
     if line is not None:
