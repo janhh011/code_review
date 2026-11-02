@@ -20,7 +20,7 @@ def test_empty_cart_cannot_check_out(cart, catalog, inventory):
 
 def test_out_of_stock_releases_earlier_reservations(cart, catalog, inventory):
     add_to_cart(cart, catalog, "AUD-DOTS", 2)
-    add_to_cart(cart, catalog, "GPU-TITAN-X9", 5)  # only 3 in stock
+    add_to_cart(cart, catalog, "LAP-NIMBUS16", 5)  # only 4 in stock
     with pytest.raises(OutOfStockError):
         place_order(cart, catalog, inventory)
     assert inventory.available("AUD-DOTS") == 50

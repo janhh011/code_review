@@ -29,7 +29,7 @@ DEFAULT_PRODUCTS = [
     Product("LAP-NIMBUS16", "Nimbus 16 Pro Laptop", "laptops", 219900, 2100),
     Product("AUD-PULSE-ANC", "Pulse ANC Headphones", "audio", 24900, 260),
     Product("AUD-DOTS", "Dots Wireless Earbuds", "audio", 8990, 55),
-    Product("GPU-TITAN-X9", "Titan X9 Graphics Card", "gpus", 179900, 2200),
+    Product("GPU-TITAN-X9", "Titan X9 Graphics Card", "gpus", 179900, 2200, max_per_order=2),
     Product("ACC-USBC-2M", "USB-C Cable 2m", "accessories", 1490, 80),
     Product("ACC-HUB-7", "7-in-1 USB-C Hub", "accessories", 4990, 120),
 ]

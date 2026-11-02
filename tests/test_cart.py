@@ -47,3 +47,18 @@ def test_remove_from_cart(cart, catalog):
     add_to_cart(cart, catalog, "ACC-HUB-7", 1)
     remove_from_cart(cart, "ACC-HUB-7")
     assert cart.lines == []
+
+
+def test_add_up_to_limit_allowed(cart, catalog):
+    add_to_cart(cart, catalog, "GPU-TITAN-X9", 2)
+    assert cart.line_for("GPU-TITAN-X9").quantity == 2
+
+
+def test_add_over_limit_rejected(cart, catalog):
+    with pytest.raises(CartError):
+        add_to_cart(cart, catalog, "GPU-TITAN-X9", 3)
+
+
+def test_product_without_limit(cart, catalog):
+    add_to_cart(cart, catalog, "ACC-USBC-2M", 10)
+    assert cart.line_for("ACC-USBC-2M").quantity == 10

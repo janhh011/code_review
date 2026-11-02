@@ -9,6 +9,7 @@ class Product:
     category: str  # "laptops", "audio", "gpus", "accessories"
     price_cents: int  # gross, VAT included
     weight_grams: int
+    max_per_order: int | None = None
 
 
 @dataclass
